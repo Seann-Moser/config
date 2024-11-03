@@ -8,7 +8,7 @@ alias goL="~/.local/share/JetBrains/Toolbox/apps/goland/bin/goland.sh ./"
 export GOPATH=$HOME/go
 #export GOROOT="/usr/local/opt/go/libexec"
 export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
-
+export PATH="$PATH:${HOME}/.local/share/JetBrains/Toolbox/scripts"
 export GONOPROXY="github.com/Seann-Moser,github.com/HiroCloud,github.com/Stodge-Inc"
 export GOPROXY="https://proxy.golang.org,direct"
 export GONOSUMDB="github.com/Seann-Moser,github.com/HiroCloud,github.com/Stodge-Inc"
