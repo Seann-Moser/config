@@ -30,3 +30,8 @@ if [ -f '/home/n2b/google-cloud-sdk/path.zsh.inc' ]; then . '/home/n2b/google-cl
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/home/n2b/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/n2b/google-cloud-sdk/completion.zsh.inc'; fi
+
+
+for file in ~/.zsh_config/*; do
+    source "$file"
+done
