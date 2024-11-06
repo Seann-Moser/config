@@ -21,3 +21,4 @@ alias update='sudo apt-get update && sudo apt-get upgrade && sudo apt-get dist-u
 alias eip='dig +short myip.opendns.com @resolver1.opendns.com'
 
 #alias psinit='bash ${HOME}/.oh-my-zsh/custom/psinit.sh'
+alias cloudsql='cloud-sql-proxy --port 3306 surveynoodle:us-west1:hirocloud-main'
