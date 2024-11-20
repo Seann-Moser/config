@@ -1,0 +1,6 @@
+[submodule "hyprpanel/hyprpanel/.config/ags"]
+	path = hyprpanel/hyprpanel/.config/ags
+	url = https://github.com/Jas-SinghFSU/HyprPanel.git
+[submodule "hyprpanel/.config/ags"]
+	path = hyprpanel/.config/ags
+	url = https://github.com/Jas-SinghFSU/HyprPanel.git

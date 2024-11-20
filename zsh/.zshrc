@@ -35,3 +35,10 @@ if [ -f '/home/n2b/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/n2b/goo
 for file in ~/.zsh_config/*; do
     source "$file"
 done
+
+# bun completions
+[ -s "/home/n2b/.bun/_bun" ] && source "/home/n2b/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
