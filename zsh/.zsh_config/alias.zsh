@@ -21,4 +21,7 @@ alias update='sudo apt-get update && sudo apt-get upgrade && sudo apt-get dist-u
 alias eip='dig +short myip.opendns.com @resolver1.opendns.com'
 
 #alias psinit='bash ${HOME}/.oh-my-zsh/custom/psinit.sh'
-alias cloudsql='cloud-sql-proxy --port 3306 surveynoodle:us-west1:hirocloud-main'
+alias cloudsql='cloud-sql-proxy --port 3306 surveynoodle:us-west1:surveynoodle-main'
+alias bambu='__EGL_VENDOR_LIBRARY_FILENAMES=/usr/share/glvnd/egl_vendor.d/50_mesa.json WEBKIT_DISABLE_DMABUF_RENDERER=1 WEBKIT_FORCE_COMPOSITING_MODE=1 WEBKIT_DISABLE_COMPOSITING_MODE=1 bambu-studio'
+
+alias steam='gamemoderun steam'

@@ -8,8 +8,8 @@
   ],
   "modules-right": [
     "pulseaudio",
-    "clock",
-    "bluetooth"
+    "clock"
+    // "bluetooth"
   ],
   "clock": {
     "format": "<span foreground='#f5c2e7'>   </span>{:%a %d %I:%M}",
@@ -43,10 +43,10 @@
     "format-disconnected": "<span size='13000' foreground='#f5e0dc'>  </span>Disconnected",
     "tooltip-format-wifi": "Signal Strenght: {signalStrength}%"
   },
-  "bluetooth":{
-    "format": "bluetooth",
-    "on-click": "flatpak run io.github.kaii_lb.Overskride"
-  },
+  // "bluetooth":{
+  //   "format": "bluetooth",
+  //   "on-click": "flatpak run io.github.kaii_lb.Overskride"
+  // },
   "pulseaudio": {
     "format": "{icon}  {volume}%",
     "format-muted": "",
