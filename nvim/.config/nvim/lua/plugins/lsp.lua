@@ -21,7 +21,7 @@ return {
         lspconfig.cssls.setup({ capabilites = capabilites, })
         lspconfig.dockerls.setup({ capabilites = capabilites, })
         lspconfig.eslint.setup({ capabilites = capabilites, })
-        lspconfig.flux_lsp.setup({ capabilites = capabilites, })
+        -- lspconfig.flux_lsp.setup({ capabilites = capabilites, })
         lspconfig.gopls.setup({ capabilites = capabilites, })
         lspconfig.html.setup({ capabilites = capabilites, })
         lspconfig.jsonls.setup({ capabilites = capabilites, })
