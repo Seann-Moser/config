@@ -12,7 +12,7 @@ return {
                 "cssls",
                 "dockerls",
                 "eslint",
-                "flux_lsp",
+                -- "flux_lsp",
                 "gopls",
                 "html",
                 "jsonls",
