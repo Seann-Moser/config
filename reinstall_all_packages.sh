@@ -6,6 +6,21 @@
 #   - pkglist_official.txt (official repo)
 #   - pkglist_aur.txt (AUR)
 
+#!/bin/bash
+
+TPM_DIR="$HOME/.tmux/plugins/tpm"
+
+if [ ! -d "$TPM_DIR" ]; then
+    echo "TPM not found. Installing..."
+    git clone https://github.com/tmux-plugins/tpm "$TPM_DIR"
+    echo "TPM installed successfully."
+else
+    echo "TPM is already installed."
+fi
+
+~/.tmux/plugins/tpm/bin/install_plugins
+~/.tmux/plugins/tpm/bin/update_plugins all
+
 set -e
 
 # 1. Install official repo packages
@@ -48,3 +63,4 @@ for dir in */ ; do
         fi
     fi
 done
+
