@@ -4,12 +4,27 @@
 #
 # Script to reinstall packages stored in:
 #   - pkglist_official.txt (official repo)
-#   - pkglist_aur.txt (AUR)
+#   - pkglist_aur.txt (AUR or equivalent)
 
-#!/bin/bash
+set -e
 
+# Detect package manager
+detect_package_manager() {
+    if command -v yay &> /dev/null; then
+        echo "yay"
+    elif command -v pacman &> /dev/null; then
+        echo "pacman"
+    elif command -v apt &> /dev/null; then
+        echo "apt"
+    else
+        echo "unsupported"
+    fi
+}
+
+PKG_MANAGER=$(detect_package_manager)
+
+# TPM Installation
 TPM_DIR="$HOME/.tmux/plugins/tpm"
-
 if [ ! -d "$TPM_DIR" ]; then
     echo "TPM not found. Installing..."
     git clone https://github.com/tmux-plugins/tpm "$TPM_DIR"
@@ -21,41 +36,51 @@ fi
 ~/.tmux/plugins/tpm/bin/install_plugins
 ~/.tmux/plugins/tpm/bin/update_plugins all
 
-set -e
-
-# 1. Install official repo packages
+# Install official repo packages
 echo "Installing official repository packages..."
 if [ -f pkglist_official.txt ]; then
-  sudo pacman -S --needed --noconfirm - < pkglist_official.txt
+    case $PKG_MANAGER in
+        yay|pacman)
+            sudo pacman -S --needed --noconfirm - < pkglist_official.txt
+            ;;
+        apt)
+            xargs -a pkglist_official.txt sudo apt install -y
+            ;;
+        *)
+            echo "Unsupported package manager for official packages."
+            ;;
+    esac
 else
-  echo "pkglist_official.txt not found."
+    echo "pkglist_official.txt not found."
 fi
 
-# 2. Install AUR packages (change 'yay' to your AUR helper of choice)
-echo "Installing AUR packages..."
+# Install AUR packages or equivalent
+echo "Installing AUR or custom packages..."
 if [ -f pkglist_aur.txt ]; then
-  if command -v yay &> /dev/null; then
-    yay -S --needed --noconfirm - < pkglist_aur.txt
-  else
-    echo "AUR helper (yay) not found. Install it or modify this script for another AUR helper."
-  fi
+    case $PKG_MANAGER in
+        yay)
+            yay -S --needed --noconfirm - < pkglist_aur.txt
+            ;;
+        pacman)
+            echo "pacman does not support AUR. Please install 'yay' or another AUR helper."
+            ;;
+        apt)
+            echo "AUR packages not supported on apt. You may need to install manually or convert the list."
+            ;;
+        *)
+            echo "Unsupported package manager for AUR packages."
+            ;;
+    esac
 else
-  echo "pkglist_aur.txt not found."
+    echo "pkglist_aur.txt not found."
 fi
 
-
+# Stow dotfiles
 TARGET=""
-
 for dir in */ ; do
-    # Check if it's actually a directory
     if [[ -d "$dir" ]]; then
-        # Remove trailing slash for clarity with Stow
         package_name="${dir%/}"
-
         echo "Stowing: $package_name"
-        
-        # If you want to target a specific directory (e.g., ~/),
-        # uncomment and use: stow -t "$TARGET" "$package_name"
         if [[ -n "$TARGET" ]]; then
             stow -t "$TARGET" "$package_name"
         else
@@ -63,4 +88,3 @@ for dir in */ ; do
         fi
     fi
 done
-
