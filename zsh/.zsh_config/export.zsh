@@ -4,6 +4,8 @@ export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
 export AWS_DEFAULT_PROFILE=Seann
 #flux completion zsh
 
+export PATH=/home/n9s/google-cloud-sdk/bin:$PATH
+
 export PATH=/opt/cuda/bin:$PATH
 export LD_LIBRARY_PATH=/opt/cuda/lib64:$LD_LIBRARY_PATH
 
