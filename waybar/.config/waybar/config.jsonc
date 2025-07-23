@@ -2,16 +2,21 @@
   "position": "top",
   "modules-left": [
     "hyprland/workspaces"
+       
+
   ],
   "modules-center": [
     "hyprland/window"
+      
   ],
   "modules-right": [
+     "custom/music",
     "pulseaudio",
-    "clock",
-    "custom/music",
-    "network",
-    "bluetooth"
+    "clock"
+     
+    
+    // "network"
+    // "bluetooth"
   ],
     "clock": {
         "format-alt": "{:%Y-%m-%d}"
@@ -23,15 +28,11 @@
       "format-disconnected": "Disconnected ⚠"
   },
   "custom/music": {
-    "exec": "echo '🎵'",
-    "interval": 3600,
-    "tooltip": "Launch music player",
-    "on-click": "flatpak run sh.cider.genten",
-    "exec-if": "pgrep Cider"
-  },
-  "bluetooth":{
-    "format": "bluetooth",
-    "on-click": "flatpak run io.github.kaii_lb.Overskride"
+    "format": "{}", // The script will provide the formatted output
+    "exec": "~/.config/waybar/scripts/music.sh",
+    "interval": 1,
+    "on-click": "~/.config/waybar/scripts/music_click.sh", // <--- Changed this line
+    "tooltip": true
   },
   "pulseaudio": {
     "format": "{icon}  {volume}%",
