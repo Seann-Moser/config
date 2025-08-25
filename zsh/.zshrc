@@ -1,3 +1,5 @@
+# Add deno completions to search path
+if [[ ":$FPATH:" != *":/home/n9s/.zsh/completions:"* ]]; then export FPATH="/home/n9s/.zsh/completions:$FPATH"; fi
 eval "$(starship init zsh)"
 
 alias ls='ls --color=auto'
@@ -25,12 +27,6 @@ bindkey '^[[A' history-substring-search-up # or '\eOA'
 bindkey '^[[B' history-substring-search-down # or '\eOB'
 HISTORY_SUBSTRING_SEARCH_ENSURE_UNIQUE=1
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/home/n2b/google-cloud-sdk/path.zsh.inc' ]; then . '/home/n2b/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/home/n2b/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/n2b/google-cloud-sdk/completion.zsh.inc'; fi
-
 
 for file in ~/.zsh_config/*; do
     source "$file"
@@ -47,3 +43,10 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 source /usr/share/nvm/nvm.sh
 source /usr/share/nvm/bash_completion
 #source /usr/share/nvm/install-nvm-exec
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/n9s/google-cloud-sdk/path.zsh.inc' ]; then . '/home/n9s/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/home/n9s/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/n9s/google-cloud-sdk/completion.zsh.inc'; fi
+. "/home/n9s/.deno/env"

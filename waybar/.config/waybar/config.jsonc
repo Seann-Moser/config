@@ -2,51 +2,38 @@
   "position": "top",
   "modules-left": [
     "hyprland/workspaces"
+       
+
   ],
   "modules-center": [
     "hyprland/window"
+      
   ],
   "modules-right": [
+     "custom/music",
     "pulseaudio",
     "clock"
+     
+    
+    // "network"
     // "bluetooth"
   ],
-  "clock": {
-    "format": "<span foreground='#f5c2e7'>   </span>{:%a %d %I:%M}",
-    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
-  },
-  "battery": {
-    "states": {
-      "warning": 30,
-      "critical": 15
+    "clock": {
+        "format-alt": "{:%Y-%m-%d}"
     },
-    "format": "<span size='13000' foreground='#a6e3a1'>{icon} </span> {capacity}%",
-    "format-warning": "<span size='13000' foreground='#B1E3AD'>{icon} </span> {capacity}%",
-    "format-critical": "<span size='13000' foreground='#E38C8F'>{icon} </span> {capacity}%",
-    "format-charging": "<span size='13000' foreground='#B1E3AD'> </span>{capacity}%",
-    "format-plugged": "<span size='13000' foreground='#B1E3AD'> </span>{capacity}%",
-    "format-alt": "<span size='13000' foreground='#B1E3AD'>{icon} </span> {time}",
-    "format-full": "<span size='13000' foreground='#B1E3AD'> </span>{capacity}%",
-    "format-icons": [
-      "",
-      "",
-      "",
-      "",
-      ""
-    ],
-    "tooltip-format": "{time}"
-  },
   "network": {
-    "format-wifi": "<span size='13000' foreground='#f5e0dc'>  </span>{essid}",
-    "format-ethernet": "<span size='13000' foreground='#f5e0dc'>󰤭  </span> Disconnected",
-    "format-linked": "{ifname} (No IP) ",
-    "format-disconnected": "<span size='13000' foreground='#f5e0dc'>  </span>Disconnected",
-    "tooltip-format-wifi": "Signal Strenght: {signalStrength}%"
+      // "interface": "wlp2s0", // (Optional) To force the use of this interface
+      "format-wifi": "{essid} ({signalStrength}%) ",
+      "format-ethernet": "",
+      "format-disconnected": "Disconnected ⚠"
   },
-  // "bluetooth":{
-  //   "format": "bluetooth",
-  //   "on-click": "flatpak run io.github.kaii_lb.Overskride"
-  // },
+  "custom/music": {
+    "format": "{}", // The script will provide the formatted output
+    "exec": "~/.config/waybar/scripts/music.sh",
+    "interval": 1,
+    "on-click": "~/.config/waybar/scripts/music_click.sh", // <--- Changed this line
+    "tooltip": true
+  },
   "pulseaudio": {
     "format": "{icon}  {volume}%",
     "format-muted": "",
