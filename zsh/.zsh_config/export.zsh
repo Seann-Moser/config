@@ -6,7 +6,10 @@ export AWS_DEFAULT_PROFILE=Seann
 
 export PATH=/home/n9s/google-cloud-sdk/bin:$PATH
 
-export PATH=/opt/cuda/bin:$PATH
-export LD_LIBRARY_PATH=/opt/cuda/lib64:$LD_LIBRARY_PATH
+#export PATH=/opt/cuda/bin:$PATH
+#export LD_LIBRARY_PATH=/opt/cuda/lib64:$LD_LIBRARY_PATH
 
 source <(fzf --zsh)
+
+export ROCM_PATH=/opt/rocm
+export HSA_OVERRIDE_GFX_VERSION=10.3.0
